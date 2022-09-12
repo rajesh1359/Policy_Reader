@@ -1,0 +1,19 @@
+[50,290,550,358]
+i
+file_name=r"D:\Consulting\PDF_Project\POLICY EXCEL SOFTWARE FORMAT\policy\bajaj\commercial passenger carrying\New folder\E Rickshaw - Passenger.pdf"
+df = read_pdf(file_name, 
+                     guess=False, pages=1, stream=True , encoding="utf-8", 
+                     area = (413.1959,0,520.85,921))
+                     
+                     
+413.1959,0,520.85,921
+
+import fitz
+doc = fitz.open(file_name)
+
+for page in doc:
+
+page=doc[3]
+
+text_instances = page.search_for("Company PAN No")
+

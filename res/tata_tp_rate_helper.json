@@ -1,0 +1,51 @@
+{
+  "TP_Group_1": {
+    "month": [1,2,3,4,5],
+    "year": [2022],
+    "TP_Rates":{
+        "3W_COMM_PVT":[3909,3919],
+        "3W_COMM_PUB":[4087,4097],
+        "4W_COMM_PVT":[8433,8443],
+        "4W_COMM_PB":[15741,15751],
+        "4W_COMM_TAXI_B_1000":[10204,10214],
+        "4W_COMM_TAXI_U_1000_B_1500":[13183,13193],
+        "4W_PVT_B_1000":[2067,2077],
+        "4W_PVT_U_1000_B_1500":[3216,3226],
+        "4W_PVT_U_1500":[7885,7895]
+        
+    }
+
+  },
+  "TP_Group_2": {
+    "month": [6,7,8,9,10,11,12],
+    "year": [2022],
+    "TP_Rates":{
+        "3W_COMM_PVT":[3917,3927],
+        "3W_COMM_PUB":[4487,4497],
+        "4W_COMM_PVT":[16044,16054],
+        "4W_COMM_PB":[16044,16054],
+        "4W_COMM_TAXI_B_1000":[10683,10693],
+        "4W_COMM_TAXI_U_1000_B_1500":[11847,11857],
+        "4W_PVT_B_1000":[2092,2102],
+        "4W_PVT_U_1000_B_1500":[3414,3424],
+        "4W_PVT_U_1500":[7895,7905]
+        
+    }
+    
+
+  },
+  "acro_map":{
+        "3W_COMM_PVT":"3W PRIVATE CARRIER",
+        "3W_COMM_PUB":"3W PUBLIC CARRIER",
+        "4W_COMM_PVT":"4W PRIVATE CARRIER",
+        "4W_COMM_PB":"4W PUBLIC CARRIER",
+        "4W_COMM_TAXI_B_1000":"4W TAXI (BELOW 1000 CC)",
+        "4W_COMM_TAXI_U_1000_B_1500":"4W TAXI (BELOW 1000-1500 CC)",
+        "4W_PVT_B_1000":"PVT CAR BELOW 1000 CC",
+        "4W_PVT_U_1000_B_1500":"PVT CAR BETWEEN 1000-1500 CC",
+        "4W_PVT_U_1500":"PVT CAR ABOVE 1500 CC",
+        "None": "Not Found"
+  }
+  
+
+}

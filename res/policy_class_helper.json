@@ -1,0 +1,21 @@
+{
+  "policies": {
+    "digit": {
+      "identifier": ["digit shall prevail in case of any dispute"]
+    },
+    "bajaj": {
+      "identifier": ["bajaj","bajaj allianz general","bajajallianz.co.in"]
+    },
+    "tata": {
+      "identifier": ["tata","aig"]
+    },
+    "icici": {
+      "identifier": ["icici","icicilombard.com"]
+    },
+    "HDFC": {
+      "identifier": ["www.hdfcergo.com","hdfc"]
+    }
+
+  }
+
+}
