@@ -6,7 +6,7 @@ import helper
 icici_Policy_Map = {
     'OD': [['damage'], []],
     'TP': [['liability', 'only'], ['damage']],
-    'Package': [['package'], ['liability']]
+    'Package': [['package'], ['liability']],
 }
 
 policy_map = {

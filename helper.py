@@ -9,7 +9,8 @@ Policy_accrpnym = {
     "SOD": "OD",
     "COMM": "Commercial",
     "PSG": "PASSENGER CARRYING",
-    "GOODS": "GOODS CARRYING"
+    "GOODS": "GOODS CARRYING",
+    "MISC": 'Miscellaneous'
 }
 def get_xy(poi, text, clip=None):
     if clip is not None:
