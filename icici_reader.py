@@ -51,18 +51,73 @@ class ICICI:
         It will be used to assemble to information from various functions
         :return:
         '''
+
+        data_dict = {
+            'A': None,
+            'B': None,
+            'C': None,
+            'D': None,
+            'E': None,
+            'F': None,
+            'G': None,
+            'H': None,
+            'I': None,
+            'J': None,
+            'K': None,
+            'L': None,
+            'M': None,
+            'N': None,
+            'O': None,
+            'P': None,
+            'Q': None,
+            'R': "",
+            'S': "",
+            'T': None,
+            'U': None,
+            'V': None,
+            'W': None,
+            'X': None
+        }
+
         policy_type = self.get_policy_type()
         print(policy_type)
-        print(self.get_insured_name(policy_type))
-        print(self.get_registration_no(policy_type))
-        print(self.get_make_model(policy_type))
-        print(self.get_insurance_period(policy_type))
-        print(self.get_policy_number(policy_type))
-        print("TP Amount is ", self.get_tp_amount(policy_type))
-        print("OD Amount is ", self.get_od_amount(policy_type))
-        print("Total Amount is ", self.get_total_amount(policy_type))
-        print("Tax Amount is ", self.get_tax(policy_type))
+        name = self.get_insured_name(policy_type)
+        reg_num = self.get_registration_no(policy_type)
+        make,model = self.get_make_model(policy_type)
+        issue_date,expiry_date =  self.get_insurance_period(policy_type)
+        policy_num = self.get_policy_number(policy_type)
 
+        tp_amount = self.get_tp_amount(policy_type)
+        od_amount = self.get_od_amount(policy_type)
+        fnl_amount = self.get_total_amount(policy_type)
+        tax = self.get_tax(policy_type)
+        net_amount = fnl_amount - tax
+        pay_out_key = "O"
+        if 'SOD' in policy_type:
+            pay_out_key = "N"
+
+        vehicle_type_index = 1
+        if "COMM" in policy_type:
+            vehicle_type_index = 2
+        data_dict['A'] = issue_date
+        data_dict['B'] = name
+        data_dict['C'] = reg_num
+        data_dict['D'] = policy_num
+        data_dict['E'] = expiry_date
+        data_dict['F'] = 'NA'
+        data_dict['G'] = helper.Policy_accrpnym[policy_type.split("_")[vehicle_type_index]]
+        data_dict['H'] = policy_type.split("_")[1]
+        data_dict['I'] = 'ICICI'
+        data_dict['J'] = make
+        data_dict['K'] = model
+        data_dict['L'] = float(fnl_amount)
+        data_dict['M'] = float(tp_amount)
+        data_dict['N'] = float(od_amount)
+        data_dict['O'] = float(net_amount)
+        data_dict['P'] = data_dict[pay_out_key]
+        data_dict['Q'] = None
+        self.doc.close()
+        return data_dict
     def get_policy_type(self):
         '''
         This function is to get the policy type based on the identifiers provided
@@ -142,18 +197,20 @@ class ICICI:
     def get_insurance_period(self,policy_type):
         start = None
         end = None
+        keys_to_check = ['Third Party Period of Insurance','Period of Insurance - Own Damage','Period of Insurance']
         if 'PVT' not in policy_type:
-
-            insurance_period = self.get_value_from_main_table("Period of Insurance").strip()
-            if len(insurance_period)!=0:
-                division = insurance_period.split("TO")
-                if len(division)>1:
-                    start = division[0].strip()
-                    end = division[1].strip()
-                else:
-                    start = division[0].strip()
-                    end = division[0].strip()
-        return start,end
+            for key in keys_to_check:
+                insurance_period = self.get_value_from_main_table(key).strip()
+                if len(insurance_period)!=0:
+                    division = insurance_period.split("TO")
+                    if len(division)>1:
+                        start = division[0].strip()
+                        end = division[1].strip()
+                    else:
+                        start = division[0].strip()
+                        end = division[0].strip()
+                    return start,end
+        return start, end
 
     def get_policy_number(self,policy_type):
         if 'PVT' in policy_type:

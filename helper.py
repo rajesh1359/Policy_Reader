@@ -1,4 +1,16 @@
 import re
+
+
+Policy_accrpnym = {
+    "TW": "Two Wheeler",
+    "TP": "TP",
+    "PVT": "Private Car",
+    "PKG": "Package",
+    "SOD": "OD",
+    "COMM": "Commercial",
+    "PSG": "PASSENGER CARRYING",
+    "GOODS": "GOODS CARRYING"
+}
 def get_xy(poi, text, clip=None):
     if clip is not None:
         s1 = poi.search_for(text, clip=clip)

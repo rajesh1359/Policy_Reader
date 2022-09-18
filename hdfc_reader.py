@@ -92,6 +92,9 @@ class HDFC:
         fnl_amount = self.get_final_amount()
         net_amount = self.get_net_amount(policy_type)
         od_amount = self.get_od_amount(policy_type)
+        pay_out_key = "O"
+        if 'SOD' in policy_type:
+            pay_out_key = "N"
         data_dict['A'] = issue_date
         data_dict['B'] = name
         data_dict['C'] = reg_num
@@ -107,7 +110,7 @@ class HDFC:
         data_dict['M'] = float(tp_amount)
         data_dict['N'] = float(od_amount)
         data_dict['O'] = float(net_amount)
-        data_dict['P'] = data_dict['O']
+        data_dict['P'] = data_dict[pay_out_key]
         data_dict['Q'] = self.get_code()
 
         self.doc.close()
