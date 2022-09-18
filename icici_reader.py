@@ -96,7 +96,7 @@ class ICICI:
         if 'SOD' in policy_type:
             pay_out_key = "N"
 
-        vehicle_type_index = 1
+        vehicle_type_index = 0
         if "COMM" in policy_type:
             vehicle_type_index = 2
         data_dict['A'] = issue_date
