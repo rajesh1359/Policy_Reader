@@ -27,6 +27,7 @@ from bajaj_parser import *
 from openpyxl.styles import PatternFill
 import WordFile
 from pathlib import Path
+import traceback
 
 redFill = PatternFill(start_color='EAE51B',
                       end_color='EAE51B',
@@ -334,18 +335,21 @@ class Ui_MainWindow(object):
                 elif policy_type =="HDFC":
                     reader = hdfc_reader.HDFC(each_file)
                     data_dict = reader.get_policy_info()
-                    data_dict['A'] = data_dict['A'].strip()
-                    data_dict['E'] = data_dict['E'].strip()
+                    # print(data_dict)
+                    # data_dict['A'] = data_dict['A'].strip()
+                    # data_dict['E'] = data_dict['E'].strip()
                     data_dict['R'] = self.plainTextEdit_3.toPlainText()
                     data_dict['S'] = self.plainTextEdit_4.toPlainText()
-                    data_dict['Y'] = '=HYPERLINK("{}", "{}")'.format(each_file, data_dict['D'])
-
-                    excel_row = self.fill_excel_sheet(data_dict, each_file)
+                    # data_dict['Y'] = '=HYPERLINK("{}", "{}")'.format(each_file, data_dict['D'])
+                    print(data_dict)
+                    # excel_row = self.fill_excel_sheet(data_dict, each_file)
 
                 else:
                     print("Script for ", each_file, " is not implimented yet")
                 self.progressBar.setValue(int(cnt * 100.0 / total_files))
-            except:
+            except Exception as e:
+                print(e)
+                traceback.print_exc()
                 dest_fpath = createCleanupDirectory()
                 shutil.copy(each_file, dest_fpath)
                 show_pop = True
