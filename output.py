@@ -227,6 +227,7 @@ class Ui_MainWindow(object):
         for each_file in file_paths:
             cnt += 1
             excel_row = None
+            print(each_file)
             try:
                 self.plainTextEdit_5.setPlainText('Reading file : {0}'.format(each_file))
                 # print(rk.get_policy_type())
@@ -336,13 +337,13 @@ class Ui_MainWindow(object):
                     reader = hdfc_reader.HDFC(each_file)
                     data_dict = reader.get_policy_info()
                     # print(data_dict)
-                    # data_dict['A'] = data_dict['A'].strip()
-                    # data_dict['E'] = data_dict['E'].strip()
+                    data_dict['A'] = data_dict['A'].strip()
+                    data_dict['E'] = data_dict['E'].strip()
                     data_dict['R'] = self.plainTextEdit_3.toPlainText()
                     data_dict['S'] = self.plainTextEdit_4.toPlainText()
-                    # data_dict['Y'] = '=HYPERLINK("{}", "{}")'.format(each_file, data_dict['D'])
-                    print(data_dict)
-                    # excel_row = self.fill_excel_sheet(data_dict, each_file)
+                    data_dict['Y'] = '=HYPERLINK("{}", "{}")'.format(each_file, data_dict['D'])
+                    # print(data_dict)
+                    excel_row = self.fill_excel_sheet(data_dict, each_file)
 
                 else:
                     print("Script for ", each_file, " is not implimented yet")
